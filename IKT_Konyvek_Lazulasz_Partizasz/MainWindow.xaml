@@ -7,21 +7,21 @@
         mc:Ignorable="d"
         Title="IKT könyvek lazulász partizász" Height="540" Width="550">
     <Grid>
-        <DataGrid Name="DataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,170"/>
-        <Button Name="NewButton" Content="Új" HorizontalAlignment="Left" Margin="453,448,0,0" VerticalAlignment="Top"/>
-        <Button Name="SaveButton" Content="Mentés" HorizontalAlignment="Left" Margin="472,448,0,0" VerticalAlignment="Top"/>
+        <DataGrid RowHeight="30" x:Name="MainDataGrid" AutoGenerateColumns="True" IsReadOnly="True" Margin="0,0,0,170"/>
+        <Button x:Name="NewButton" Content="Új" HorizontalAlignment="Left" Margin="453,448,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SaveButton" Content="Mentés" HorizontalAlignment="Left" Margin="472,448,0,0" VerticalAlignment="Top"/>
         <Label Content="Cím" HorizontalAlignment="Left" Margin="37,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
-        <TextBox HorizontalAlignment="Left" Margin="37,395,0,0" TextWrapping="Wrap" Name="TitleTextBox" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="37,395,0,0" TextWrapping="Wrap" x:Name="TitleTextBox" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Szerző" HorizontalAlignment="Left" Margin="37,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
-        <TextBox HorizontalAlignment="Left" Margin="37,448,0,0" TextWrapping="Wrap" Name="WriterTextBox" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="37,448,0,0" TextWrapping="Wrap" x:Name="WriterTextBox" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Kiadó" HorizontalAlignment="Left" Margin="197,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
-        <TextBox HorizontalAlignment="Left" Margin="197,395,0,0" TextWrapping="Wrap" Name="PublisherTextBox" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="197,395,0,0" TextWrapping="Wrap" x:Name="PublisherTextBox" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Ár" HorizontalAlignment="Left" Margin="197,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
-        <TextBox HorizontalAlignment="Left" Margin="197,448,0,0" TextWrapping="Wrap" Name="PriceTextBox" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="197,448,0,0" TextWrapping="Wrap" x:Name="PriceTextBox" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Raktáron" HorizontalAlignment="Left" Margin="362,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
-        <TextBox HorizontalAlignment="Left" Margin="362,395,0,0" TextWrapping="Wrap" Name="StockTextBox" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="362,395,0,0" TextWrapping="Wrap" x:Name="StockTextBox" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <ProgressBar Margin="0,0,0,0" VerticalAlignment="Top" Width="550" Height="10" IsIndeterminate="True"></ProgressBar>
+        <ProgressBar x:Name="ProgressBar" Margin="0,0,0,0" VerticalAlignment="Top" Width="550" Height="10" IsIndeterminate="True"></ProgressBar>
         <Label x:Name="StatusTextView" Content="" HorizontalAlignment="Left" Margin="265,334,0,0" VerticalAlignment="Top"/>
 
     </Grid>
