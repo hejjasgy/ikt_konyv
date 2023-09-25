@@ -5,7 +5,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
 
         int id;
         String konyv, szerzo, kiado;
-        double ar;
+        int ar;
         int raktaron;
 
         public int getID(){return this.id;}
@@ -25,7 +25,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
             set{kiado = value;}
         }
 
-        public Double Ar{
+        public int Ar{
             get{return ar;}
             set{ar = value;}
         }
@@ -35,7 +35,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
             set{raktaron = value;}
         }
 
-        public Konyv(Int32 id, String konyv, String szerzo, String kiado, Double ar, Int32 raktaron){
+        public Konyv(Int32 id, String konyv, String szerzo, String kiado, int ar, Int32 raktaron){
             this.id = id;
             this.konyv = konyv;
             this.szerzo = szerzo;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows;
 using System.Windows.Documents;
 using MySql.Data.MySqlClient;
 
@@ -33,7 +34,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
                             mySqlDataReader["booktitle"].ToString(),
                             mySqlDataReader["author"].ToString(),
                             mySqlDataReader["publisher"].ToString(),
-                            double.Parse(mySqlDataReader["price"].ToString()),
+                            Int32.Parse(mySqlDataReader["price"].ToString()),
                             Int32.Parse(mySqlDataReader["stock"].ToString()));
                     
                     list.Add(konyv);
@@ -46,8 +47,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
             return list;
         }
         
-        public static Boolean UPDATE(int id, Konyv ujKonyv){
-            List<Konyv> list = new List<Konyv>();
+        public static String UPDATE(int id, Konyv ujKonyv){
             MySqlCommand mySqlCommand = new MySqlCommand();
             mySqlCommand.CommandType = CommandType.Text;
             mySqlCommand.CommandText = "UPDATE books SET booktitle = @CIM, author=@SZERZO, publisher=@KIADO, price=@AR, stock=@RAKTARON WHERE id=@ID";
@@ -58,7 +58,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
                 mySqlCommand.Parameters.Add(new MySqlParameter("@CIM", MySqlDbType.VarChar)).Value = ujKonyv.Cim;
                 mySqlCommand.Parameters.Add(new MySqlParameter("@SZERZO", MySqlDbType.VarChar)).Value = ujKonyv.Szerzo;
                 mySqlCommand.Parameters.Add(new MySqlParameter("@KIADO", MySqlDbType.VarChar)).Value = ujKonyv.Kiado;
-                mySqlCommand.Parameters.Add(new MySqlParameter("@AR", MySqlDbType.Decimal)).Value = ujKonyv.Ar;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@AR", MySqlDbType.Int32)).Value = ujKonyv.Ar;
                 mySqlCommand.Parameters.Add(new MySqlParameter("@RAKTARON", MySqlDbType.Int32)).Value = ujKonyv.Raktaron;
                 mySqlCommand.Parameters.Add(new MySqlParameter("@ID", MySqlDbType.Int32)).Value = ujKonyv.getID();
 
@@ -67,16 +67,71 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
                     mySqlCommand.ExecuteNonQuery();
                 }catch(Exception exception){
                     Console.WriteLine(exception);
-                    return false;
+                    return exception.Message;
                 }
             }catch(Exception exception){ 
                 Console.WriteLine(exception);
-                return false;
+                return exception.Message;
             }
             
             connection.Close();
-            return true;
+            return "Siker!";
         }
         
+        public static String DELETE(int id){
+            MySqlCommand mySqlCommand = new MySqlCommand();
+            mySqlCommand.CommandType = CommandType.Text;
+            mySqlCommand.CommandText = "DELETE FROM books WHERE id=@ID;";
+            
+            MySqlConnection connection = databaseConnection;
+            try{
+                mySqlCommand.Connection = connection;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@ID", MySqlDbType.Int32)).Value = id;
+
+                mySqlCommand.Connection.Open();
+                try{
+                    mySqlCommand.ExecuteNonQuery();
+                }catch(Exception exception){
+                    Console.WriteLine(exception);
+                    return exception.Message;
+                }
+            }catch(Exception exception){ 
+                Console.WriteLine(exception);
+                return exception.Message;
+            }
+            
+            connection.Close();
+            return "Siker";
+        }
+
+        public static String INSERT(Konyv konyv){
+            MySqlCommand mySqlCommand = new MySqlCommand();
+            mySqlCommand.CommandType = CommandType.Text;
+            mySqlCommand.CommandText = "INSERT INTO `books`(`booktitle`, `author`, `publisher`, `price`, `stock`) VALUES (@CIM,@SZERZO,@KIADO,@AR,@RAKTARON);";
+            
+            MySqlConnection connection = databaseConnection;
+            try{
+                mySqlCommand.Connection = connection;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@CIM", MySqlDbType.VarChar)).Value = konyv.Cim;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@SZERZO", MySqlDbType.VarChar)).Value = konyv.Szerzo;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@KIADO", MySqlDbType.VarChar)).Value = konyv.Kiado;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@AR", MySqlDbType.Int32)).Value = konyv.Ar;
+                mySqlCommand.Parameters.Add(new MySqlParameter("@RAKTARON", MySqlDbType.Int32)).Value = konyv.Raktaron;
+                mySqlCommand.Connection.Open();
+                try{
+                    mySqlCommand.ExecuteNonQuery();
+                }catch(Exception exception){
+                    Console.WriteLine(exception);
+                    return exception.Message;
+                }
+            }catch(Exception exception){ 
+                Console.WriteLine(exception);
+                MessageBox.Show(exception.Message);
+                return exception.Message;
+            }
+            
+            connection.Close();
+            return "Siker";
+        }
     }
 }

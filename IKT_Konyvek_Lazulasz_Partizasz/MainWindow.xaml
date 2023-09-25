@@ -8,8 +8,9 @@
         Title="IKT könyvek lazulász partizász" Height="540" Width="550">
     <Grid>
         <DataGrid RowHeight="30" x:Name="MainDataGrid" AutoGenerateColumns="True" IsReadOnly="True" Margin="0,0,0,170"/>
-        <Button x:Name="NewButton" Content="Új" HorizontalAlignment="Left" Margin="453,448,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="NewCheckbox" Content="Új könyv?" HorizontalAlignment="Left" Margin="356,450,0,0" VerticalAlignment="Top"/>
         <Button x:Name="SaveButton" Content="Mentés" HorizontalAlignment="Left" Margin="472,448,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DeleteButton" Content="Törlés" HorizontalAlignment="Left" Margin="432,448,0,0" VerticalAlignment="Top"/>
         <Label Content="Cím" HorizontalAlignment="Left" Margin="37,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
         <TextBox HorizontalAlignment="Left" Margin="37,395,0,0" TextWrapping="Wrap" x:Name="TitleTextBox" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Szerző" HorizontalAlignment="Left" Margin="37,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.268,-0.938"/>
