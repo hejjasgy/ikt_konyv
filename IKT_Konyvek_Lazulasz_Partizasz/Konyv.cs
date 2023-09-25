@@ -2,18 +2,15 @@
 
 namespace IKT_Konyvek_Lazulasz_Partizasz{
     public class Konyv{
-        
+
         int id;
         String konyv, szerzo, kiado;
         double ar;
         int raktaron;
-        
-        public Int32 Id{
-            get{return id;}
-            set{id = value;}
-        }
 
-        public String Konyv1{
+        public int getID(){return this.id;}
+        
+        public String Cim{
             get{return konyv;}
             set{konyv = value;}
         }
