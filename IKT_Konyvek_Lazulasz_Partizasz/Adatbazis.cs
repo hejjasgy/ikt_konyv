@@ -22,7 +22,8 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT "+ select + " FROM books;";
-            
+            MainWindow.StatusTextBlock.Content = "csatlakozás";
+
             MySqlConnection connection = databaseConnection;
             try{
                 connection.Open();
@@ -41,6 +42,7 @@ namespace IKT_Konyvek_Lazulasz_Partizasz{
                 }
             }catch(Exception exception){ 
                 Console.WriteLine(exception);
+                return new List<Konyv>(){new Konyv(-1, exception.Message, "", "", -1,-1)};
             }
             
             connection.Close();
